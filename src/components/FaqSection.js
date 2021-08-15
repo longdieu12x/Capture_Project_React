@@ -1,38 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import { About } from '../styles';
+import Toggle from './Toggle.js';
+import { AnimateSharedLayout } from 'framer-motion';
+import { UseScroll } from './useScroll';
+import { scrollReveal } from '../animation';
 const FaqSection = () => {
+    const [element, controls] = UseScroll();
     return (
-        <Faq>
+        <Faq variants={scrollReveal} animate={controls} initial="hidden" ref={element}>
             <h2>Any Questions <span>FAQ</span></h2>
-            <div className="question">
-                <h4>How Do I Start?</h4>
+            <AnimateSharedLayout>
+                <Toggle title="How Do I Start">
                 <div className="answer">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci corporis explicabo architecto voluptatem aperiam iusto sapiente praesentium eligendi? Nulla harum rerum reprehenderit veniam debitis ut nemo labore? Accusantium, excepturi minima.</p>
                 </div>
-                <div class="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>Daily Schedule</h4>
+                </Toggle>
+                <Toggle title="Daily Schedule">
                 <div className="answer">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci corporis explicabo architecto voluptatem aperiam iusto sapiente praesentium eligendi? Nulla harum rerum reprehenderit veniam debitis ut nemo labore? Accusantium, excepturi minima.</p>
                 </div>
-                <div class="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>Different Payment Methods</h4>
+                </Toggle>
+                <Toggle title="Different Payment Methods">
                 <div className="answer">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci corporis explicabo architecto voluptatem aperiam iusto sapiente praesentium eligendi? Nulla harum rerum reprehenderit veniam debitis ut nemo labore? Accusantium, excepturi minima.</p>
                 </div>
-                <div class="faq-line"></div>
-            </div>
-            <div className="question">
-                <h4>What Products do you offer?</h4>
+                </Toggle>
+                <Toggle title="What Products do you prefer">
                 <div className="answer">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci corporis explicabo architecto voluptatem aperiam iusto sapiente praesentium eligendi? Nulla harum rerum reprehenderit veniam debitis ut nemo labore? Accusantium, excepturi minima.</p>
                 </div>
-                <div class="faq-line"></div>
-            </div>
+                </Toggle>
+            </AnimateSharedLayout>
         </Faq>
     );
 }
